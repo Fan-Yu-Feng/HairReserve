@@ -107,8 +107,22 @@ class AdminMeetService extends BaseAdminService {
 		isShowLimit,
 		formSet,
 	}) {
+    
+    
+		// 入库
+		let data = {
+      MEET_TYPE_ID: typeId,
+      MEET_TYPE_NAME: typeName,
+			MEET_ADMIN_ID: adminId,
+			MEET_TITLE: title,
+      MEET_IS_SHOW_LIMIT: isShowLimit,
+      MEET_DAYS:daysSet,
+      MEET_FORM_SET:formSet,
+      MEET_ORDER:order
+		}
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+    await MeetModel.insert(data);
+		this.AppError('预约插入功能暂不开放：cclinux0730');
 	}
 
 	/**删除数据 */
