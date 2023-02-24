@@ -54,17 +54,17 @@ class AdminMeetService extends BaseAdminService {
 
 	/** 自助签到码 */
 	async genSelfCheckinQr(page, timeMark) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('自助签到码,此功能暂不开放，如有需要请加作者微信：cclinux0730');
 	}
 
 	/** 管理员按钮核销 */
 	async checkinJoin(joinId, flag) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('管理员按钮核销此功能暂不开放，如有需要请加作者微信：cclinux0730');
 	}
 
 	/** 管理员扫码核销 */
 	async scanJoin(meetId, code) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('管理员扫码核销此功能暂不开放，如有需要请加作者微信：cclinux0730');
 	}
 
 	/**
@@ -93,7 +93,7 @@ class AdminMeetService extends BaseAdminService {
 
 	/** 取消某个时间段的所有预约记录 */
 	async cancelJoinByTimeMark(admin, meetId, timeMark, reason) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('取消某个时间段的所有预约记录，如有需要请加作者微信：cclinux0730');
 	}
 
 
@@ -108,7 +108,6 @@ class AdminMeetService extends BaseAdminService {
 		formSet,
 	}) {
     
-    
 		// 入库
 		let data = {
       MEET_TYPE_ID: typeId,
@@ -120,14 +119,12 @@ class AdminMeetService extends BaseAdminService {
       MEET_FORM_SET:formSet,
       MEET_ORDER:order
 		}
-
     await MeetModel.insert(data);
-		this.AppError('预约插入功能暂不开放：cclinux0730');
 	}
 
 	/**删除数据 */
 	async delMeet(id) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('删除数据此功能暂不开放，如有需要请加作者微信：cclinux0730');
 	}
 
 	/**获取信息 */
@@ -141,8 +138,9 @@ class AdminMeetService extends BaseAdminService {
 		if (!meet) return null;
 
 		let meetService = new MeetService();
-		meet.MEET_DAYS_SET = await meetService.getDaysSet(id, timeUtil.time('Y-M-D')); //今天及以后
-
+    //今天及以后
+    meet.MEET_DAYS_SET = await meetService.getDaysSet(id, timeUtil.time('Y-M-D')); 
+    cloudUtil.log("获取预约详情 ",meet)
 		return meet;
 	}
 
@@ -150,14 +148,19 @@ class AdminMeetService extends BaseAdminService {
 	 * 更新富文本详细的内容及图片信息
 	 * @returns 返回 urls数组 [url1, url2, url3, ...]
 	 */
-	async updateMeetContent({
+	async  updateMeetContent({
 		meetId,
 		content // 富文本数组
 	}) {
-
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
-
-	}
+    let where = {
+			MEET_ID: meetId
+    }
+    let data = {
+      MEET_CONTENT:content
+    }
+    cloudUtil.log("更新预约记录成功", meetId)
+    return await MeetModel.edit(where,data)
+  }
 
 	/**
 	 * 更新封面内容及图片信息
@@ -167,9 +170,13 @@ class AdminMeetService extends BaseAdminService {
 		meetId,
 		styleSet
 	}) {
-
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
-
+    let where = {
+			MEET_ID: meetId
+    }
+    let data = {
+      MEET_STYLE_SET:styleSet
+    }
+    return await MeetModel.edit(where,data)
 	}
 
 	/** 更新日期设置 */
@@ -188,8 +195,20 @@ class AdminMeetService extends BaseAdminService {
 		isShowLimit,
 		formSet
 	}) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
-
+    let where = {
+			_pid: id
+    }
+    		// 入库
+		let data = {
+      MEET_TYPE_ID: typeId,
+      MEET_TYPE_NAME: typeName,
+			MEET_TITLE: title,
+      MEET_IS_SHOW_LIMIT: isShowLimit,
+      MEET_DAYS:daysSet,
+      MEET_FORM_SET:formSet,
+      MEET_ORDER:order
+		}
+    return await MeetModel.edit(where,data)
 	}
 
 	/**预约名单分页列表 */
