@@ -118,7 +118,8 @@ class AdminMeetService extends BaseAdminService {
       MEET_DAYS:daysSet,
       MEET_FORM_SET:formSet,
       MEET_ORDER:order
-		}
+    }
+    // daySet 需要插入 DayModel meetService.getDaysSet
     await MeetModel.insert(data);
 	}
 
