@@ -119,8 +119,13 @@ class AdminMeetService extends BaseAdminService {
       MEET_FORM_SET:formSet,
       MEET_ORDER:order
     }
-    // daySet 需要插入 DayModel meetService.getDaysSet
-    await MeetModel.insert(data);
+    let meet =  await MeetModel.insert(data);
+    for (let k in daysSet){
+      daysSet[k].DAY_MEET_ID = meet._pid;
+    }
+    dayArr = await DayModel.insertBatch(days);
+    meet.MEET_DAYS = dayArr;
+    return this.editMeet(meet)
 	}
 
 	/**删除数据 */
