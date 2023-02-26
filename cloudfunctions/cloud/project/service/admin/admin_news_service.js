@@ -25,12 +25,17 @@ class AdminNewsService extends BaseAdminService {
 		url = '', //外部链接
 
 	}) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    let data ={
+
+    }
+
+    return await NewsModel.insert(data);
+
 	}
 
 	/**删除资讯数据 */
 	async delNews(id) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    return await NewsModel.del(id);
 	}
 
 	/**获取资讯信息 */
@@ -54,9 +59,10 @@ class AdminNewsService extends BaseAdminService {
 		newsId,
 		content // 富文本数组
 	}) {
-
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
-
+    let data = {
+      NEWS_CONTENT: content
+    }
+     return await NewsModel.edit(newsId,data);
 	}
 
 	/**
@@ -67,9 +73,10 @@ class AdminNewsService extends BaseAdminService {
 		newsId,
 		imgList // 图片数组
 	}) {
-
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
-
+    let data = {
+      NEWS_PIC: imgList
+    }
+     return await NewsModel.edit(newsId,data)
 	}
 
 
@@ -84,8 +91,17 @@ class AdminNewsService extends BaseAdminService {
 		desc = '',
 		url = '', //外部链接
 	}) {
+    let data = {
+      NEWS_TITLE: title,
+      NEWS_CATE_ID: cateId,
+      NEWS_CATE_NAME: cateName,
+      NEWS_ORDER: order,
+      NEWS_TYPE: type,
+      NEWS_DESC: desc,
+      NEWS_URL: url,
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    }
+     return await NewsModel.edit(newsId,data)
 	}
 
 	/**取得资讯分页列表 */

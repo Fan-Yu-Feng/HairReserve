@@ -54,17 +54,34 @@ class AdminMeetService extends BaseAdminService {
 
 	/** 自助签到码 */
 	async genSelfCheckinQr(page, timeMark) {
+    console.log(page)
+    console.log(timeMark)
 		this.AppError('自助签到码,此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 	/** 管理员按钮核销 */
 	async checkinJoin(joinId, flag) {
-		this.AppError('管理员按钮核销此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    console.log(joinId)
+    console.log(flag)
+    let data = {
+      JOIN_IS_CHECKIN: flag
+    }
+    return await JoinModel.edit(joinId,data);
 	}
 
 	/** 管理员扫码核销 */
 	async scanJoin(meetId, code) {
-		this.AppError('管理员扫码核销此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    // 修改meet id 的code 以及状态
+    let data = {
+      JOIN_IS_CHECKIN: 1
+    };
+    
+    let where = {
+      JOIN_MEET_ID: meetId,
+      JOIN_CODE: code
+    }
+    MeetModel.edit
+    JoinModel.edit(where, data);
 	}
 
 	/**
@@ -185,7 +202,7 @@ class AdminMeetService extends BaseAdminService {
     console.log(nowDay)    
     console.log(daysSetData)
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+		this.AppError('更新日期设置功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 	/**更新数据 */
@@ -327,9 +344,19 @@ class AdminMeetService extends BaseAdminService {
 	 * 特殊约定 99=>正常取消 
 	 */
 	async statusJoin(admin, joinId, status, reason = '') {
-
-
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    let adminId = admin.ADMIN_ID
+    let adminName = admin.ADMIN_NAME
+    // let adminPhone = admin.ADMIN_PHONE
+    // let amdinType = admin.ADMIN_TYPE
+    let data = {
+      JOIN_EDIT_ADMIN_ID: adminId,
+      JOIN_EDIT_ADMIN_NAME: adminName,
+      JOIN_EDIT_ADMIN_ID: adminId,
+      JOIN_REASON: reason,
+      JOIN_EDIT_ADMIN_TIME: Date.now(),
+      JOIN_EDIT_ADMIN_STATUS: status
+    }
+    return await JoinModel.edit(joinId, data)
 	}
 
 	/**修改项目状态 */
@@ -343,10 +370,10 @@ class AdminMeetService extends BaseAdminService {
 
 	/**置顶排序设定 */
 	async sortMeet(id, sort) {
-    console.log(id)
-    console.log(sort)
-    
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    let data = {
+      MEET_ORDER: sort 
+    }
+    return await MeetModel.edit(id,data)
 	}
 }
 
