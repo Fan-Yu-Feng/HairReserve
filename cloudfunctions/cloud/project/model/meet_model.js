@@ -16,8 +16,8 @@ class MeetModel extends BaseModel {
 MeetModel.CL = "ax_meet";
 
 MeetModel.DB_STRUCTURE = {
-	_pid: 'string|true',
-	MEET_ID: 'string|true',
+	_pid: 'string|true|comment=项目id',
+	MEET_ID: 'string|true|comment=主键id',
 	MEET_ADMIN_ID: 'string|true|comment=添加的管理员',
 	MEET_TITLE: 'string|true|comment=标题',
 

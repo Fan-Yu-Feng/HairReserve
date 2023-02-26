@@ -25,12 +25,12 @@ class AdminNewsService extends BaseAdminService {
 		url = '', //外部链接
 
 	}) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 	/**删除资讯数据 */
 	async delNews(id) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 	/**获取资讯信息 */
@@ -55,7 +55,7 @@ class AdminNewsService extends BaseAdminService {
 		content // 富文本数组
 	}) {
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 
 	}
 
@@ -68,7 +68,7 @@ class AdminNewsService extends BaseAdminService {
 		imgList // 图片数组
 	}) {
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 
 	}
 
@@ -85,7 +85,7 @@ class AdminNewsService extends BaseAdminService {
 		url = '', //外部链接
 	}) {
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 	/**取得资讯分页列表 */
@@ -151,12 +151,12 @@ class AdminNewsService extends BaseAdminService {
 
 	/**修改资讯状态 */
 	async statusNews(id, status) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 	/**资讯置顶排序设定 */
 	async sortNews(id, sort) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 }
 

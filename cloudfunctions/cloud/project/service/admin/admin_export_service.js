@@ -50,7 +50,7 @@ class AdminExportService extends BaseAdminService {
 		endDay,
 		status
 	}) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 
 	}
 
@@ -72,7 +72,7 @@ class AdminExportService extends BaseAdminService {
 	/**导出用户数据 */
 	async exportUserDataExcel(condition) {
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 
 	}
 }

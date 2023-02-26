@@ -19,7 +19,7 @@ class AdminSetupService extends BaseAdminService {
 		aboutPic
 	}) {
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 	/** 联系我们设置 */
@@ -30,7 +30,7 @@ class AdminSetupService extends BaseAdminService {
 		servicePic,
 	}) {
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 	/** 小程序码 */
