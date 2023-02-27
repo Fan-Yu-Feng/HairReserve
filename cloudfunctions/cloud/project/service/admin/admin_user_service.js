@@ -90,7 +90,6 @@ class AdminUserService extends BaseAdminService {
 
 		// 为导出增加一个参数condition
 		result.condition = encodeURIComponent(JSON.stringify(where));
-
 		return result;
 	}
 

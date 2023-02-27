@@ -18,9 +18,12 @@ class AdminSetupService extends BaseAdminService {
 		about,
 		aboutPic
 	}) {
-    console.log(about)
-    console.log(aboutPic)
-		this.AppError('关于我们功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    let where = {}
+    let data = {
+      SETUP_ABOUT:about,
+      SETUP_ABOUT_PIC: aboutPic
+    }
+    return await SetupModel.edit(where,data);
 	}
 
 	/** 联系我们设置 */
@@ -30,8 +33,14 @@ class AdminSetupService extends BaseAdminService {
 		officePic,
 		servicePic,
 	}) {
-
-		this.AppError('联系我们设置功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    let where = {}
+    let data = {
+      SETUP_ADDRESS:address,
+      SETUP_PHONE: phone,
+      SETUP_OFFICE_PIC: officePic,
+      SETUP_SERVICE_PIC: servicePic
+    }
+    return await SetupModel.edit(where,data);
 	}
 
 	/** 小程序码 */

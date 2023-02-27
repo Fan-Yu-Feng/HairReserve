@@ -50,8 +50,19 @@ class AdminExportService extends BaseAdminService {
 		endDay,
 		status
 	}) {
-		this.AppError('导出报名数据功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
-
+    let where = {
+      JOIN_MEET_ID: meetId,
+      JOIN_STATUS: status,
+      JOIN_MEET_DAY: 	['between', startDay,endDay]
+    }
+    let orderBy = {
+			'JOIN_ADD_TIME': 'desc'
+		};
+    let fileds= "*"
+    let joinList = await JoinModel.getAll(where, fileds,orderBy)
+    let cnt = await JoinModel.count(where);
+    let dataService = new DataService();
+    return await dataService.exportDataExcel(EXPORT_JOIN_DATA_KEY,"报名数据",cnt,joinList);
 	}
 
 
@@ -71,9 +82,18 @@ class AdminExportService extends BaseAdminService {
 
 	/**导出用户数据 */
 	async exportUserDataExcel(condition) {
-
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
-
+    let where = decodeURIComponent(condition)
+    console.log(where)
+    let fields = '*';
+    let orderBy = {
+      'USER_ID': 'asc'
+    };
+    let userList = await UserModel.getAll(where,fields,orderBy)
+    console.log(userList)
+    
+		let cnt = await UserModel.count(where);
+		let dataService = new DataService();
+    return await dataService.exportDataExcel(EXPORT_USER_DATA_KEY,"理发店用户数据",cnt,userList)
 	}
 }
 
