@@ -167,12 +167,18 @@ class AdminNewsService extends BaseAdminService {
 
 	/**修改资讯状态 */
 	async statusNews(id, status) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    let data = {
+      NEWS_STATUS:status
+    }
+    return await NewsModel.edit(id, data);
 	}
 
 	/**资讯置顶排序设定 */
 	async sortNews(id, sort) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    let data = {
+      NEWS_ORDER: sort
+    }
+    return await NewsModel.edit(id, data);
 	}
 }
 

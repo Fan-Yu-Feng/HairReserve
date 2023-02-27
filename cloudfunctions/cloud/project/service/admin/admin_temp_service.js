@@ -28,7 +28,7 @@ class AdminTempService extends BaseAdminService {
 		isLimit
 	}) {
     console.log(isLimit,limit)
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx'); 
+		this.AppError('更新数据功能暂不开放，如有需要请加作者微信：fanyufeng_wx'); 
     let data = {}
     return await TempModel.edit(id,data)
 	}

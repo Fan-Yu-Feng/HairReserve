@@ -50,7 +50,7 @@ class AdminExportService extends BaseAdminService {
 		endDay,
 		status
 	}) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+		this.AppError('导出报名数据功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 
 	}
 

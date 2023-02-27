@@ -55,7 +55,11 @@ class AdminMeetService extends BaseAdminService {
 	/** 自助签到码 */
 	async genSelfCheckinQr(page, timeMark) {
     console.log(page)
+    
+    let day = this.getDayByTimeMark(timeMark);
+    console.log(day)
     console.log(timeMark)
+		let meet = await this.getMeetOneDay(meetId, day, meetWhere);
 		this.AppError('自助签到码,此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
@@ -110,7 +114,28 @@ class AdminMeetService extends BaseAdminService {
 
 	/** 取消某个时间段的所有预约记录 */
 	async cancelJoinByTimeMark(admin, meetId, timeMark, reason) {
-		this.AppError('取消某个时间段的所有预约记录，如有需要请加作者微信：fanyufeng_wx');
+
+    let adminId = admin.ADMIN_ID
+    let adminName = admin.ADMIN_NAME
+    console.log(admin)
+    console.log(meetId)
+    console.log(reason)
+    console.log(timeMark)
+    let day = this.getDayByTimeMark(timeMark);
+    console.log(day)
+    let where = {
+      JOIN_MEET_ID: meetId,
+      JOIN_MEET_DAY: day,
+      JOIN_EDIT_ADMIN_ID: adminId,
+      JOIN_EDIT_ADMIN_NAME: adminName,
+      JOIN_REASON: reason,
+      JOIN_EDIT_ADMIN_TIME: Date.now(),
+      JOIN_EDIT_ADMIN_STATUS: 10
+    }
+		// let meet = await this.getMeetOneDay(meetId, day, meetWhere);
+    await JoinModel.edit(where,data)
+    
+		this.AppError('取消某个时间段的所有预约记录暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 
 

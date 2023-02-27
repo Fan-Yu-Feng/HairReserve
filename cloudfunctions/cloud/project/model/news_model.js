@@ -28,7 +28,7 @@ NewsModel.DB_STRUCTURE = {
 	NEWS_CATE_ID: 'string|true|comment=分类编号',
 	NEWS_CATE_NAME: 'string|true|comment=分类冗余',
 
-	NEWS_ORDER: 'int|true|default=9999',
+	NEWS_ORDER: 'int|true|default=9999|comment=排序',
 
 	NEWS_HOME: 'int|true|default=9999|comment=推荐到首页',
 
