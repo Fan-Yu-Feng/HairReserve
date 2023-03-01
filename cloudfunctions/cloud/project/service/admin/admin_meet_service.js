@@ -84,8 +84,7 @@ class AdminMeetService extends BaseAdminService {
       JOIN_MEET_ID: meetId,
       JOIN_CODE: code
     }
-    MeetModel.edit
-    JoinModel.edit(where, data);
+    return await JoinModel.edit(where, data);
 	}
 
 	/**
@@ -171,8 +170,13 @@ class AdminMeetService extends BaseAdminService {
 
 	/**删除数据 */
 	async delMeet(id) {
-    console.log(id)
-    await DayModel.del(id);
+    console.log("删除预约id 为 ",id , "的数据")
+
+    let where = {
+      MEET_ID: id
+    }
+    // 删除预约时间
+    await DayModel.del(where);
     return await MeetModel.del(id);
 	}
 

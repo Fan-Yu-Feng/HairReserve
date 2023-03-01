@@ -60,9 +60,13 @@ class AdminExportService extends BaseAdminService {
 		};
     let fileds= "*"
     let joinList = await JoinModel.getAll(where, fileds,orderBy)
-    let cnt = await JoinModel.count(where);
+    const arrayList = []
+    for (const key in joinList) {
+       let objArr =  Object.values(joinList[key]);
+       arrayList.push(objArr)
+    }
     let dataService = new DataService();
-    return await dataService.exportDataExcel(EXPORT_JOIN_DATA_KEY,"报名数据",cnt,joinList);
+    return await dataService.exportDataExcel(EXPORT_JOIN_DATA_KEY,"报名数据",joinList.length,arrayList);
 	}
 
 
@@ -82,18 +86,21 @@ class AdminExportService extends BaseAdminService {
 
 	/**导出用户数据 */
 	async exportUserDataExcel(condition) {
-    let where = decodeURIComponent(condition)
-    console.log(where)
+    let where = JSON.parse(decodeURIComponent(condition))
     let fields = '*';
     let orderBy = {
       'USER_ID': 'asc'
     };
     let userList = await UserModel.getAll(where,fields,orderBy)
-    console.log(userList)
-    
-		let cnt = await UserModel.count(where);
+
+    const arrayList = []
+    for (const key in userList) {
+       let objArr =  Object.values(userList[key]);
+       arrayList.push(objArr)
+    }
+    console.log(arrayList)
 		let dataService = new DataService();
-    return await dataService.exportDataExcel(EXPORT_USER_DATA_KEY,"理发店用户数据",cnt,userList)
+    return await dataService.exportDataExcel(EXPORT_USER_DATA_KEY,"理发店用户数据",userList.length,arrayList)
 	}
 }
 
