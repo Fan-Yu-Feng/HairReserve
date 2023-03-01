@@ -87,7 +87,7 @@
  	if (url.startsWith('/pages/')) {
  		url = url.replace('/pages/', '/projects/' + PID + '/');
  	} else {
- 		url = '/projects/' + PID + '/' + url;
+ 		url = 'projects/' + PID + '/' + url;
  	}
  	return url;
  }

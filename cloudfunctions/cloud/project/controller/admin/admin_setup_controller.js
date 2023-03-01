@@ -25,8 +25,7 @@ class AdminSetupController extends BaseAdminController {
 		// 取得数据
 		let input = this.validateData(rules);
 		let service = new AdminSetupService();
-		await service.setupAbout(input);
-
+		return await service.setupAbout(input);
 	}
 
 	/**  联系我们 */
@@ -44,8 +43,7 @@ class AdminSetupController extends BaseAdminController {
 		// 取得数据
 		let input = this.validateData(rules);
 		let service = new AdminSetupService();
-		await service.setupContact(input);
-
+	  return	await service.setupContact(input);
 	} 
  
 	async genMiniQr() {

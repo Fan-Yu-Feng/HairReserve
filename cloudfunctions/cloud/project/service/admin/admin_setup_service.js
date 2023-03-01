@@ -45,7 +45,8 @@ class AdminSetupService extends BaseAdminService {
 
 	/** 小程序码 */
 	async genMiniQr() {
-		//生成小程序qr buffer
+		//生成小程序qr buffer    "page": "/projects/A00/meet/self/meet_self"
+
 		let cloud = cloudBase.getCloud();
 
 		let page = "projects/" + this.getProjectId() + "/default/index/default_index";

@@ -55,12 +55,23 @@ class AdminMeetService extends BaseAdminService {
 	/** 自助签到码 */
 	async genSelfCheckinQr(page, timeMark) {
     console.log(page)
-    
-    let day = this.getDayByTimeMark(timeMark);
-    console.log(day)
-    console.log(timeMark)
-		let meet = await this.getMeetOneDay(meetId, day, meetWhere);
-		this.AppError('自助签到码,此功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
+    let cloud = cloudBase.getCloud();
+    page = "projects/A00/meet/self/meet_self"
+		let result = await cloud.openapi.wxacode.getUnlimited({
+			scene: 'qr',
+			width: 280,
+			check_path: false,
+			env_version: 'release', //trial,develop
+			page
+		});
+    console.log(result)
+		let upload = await cloud.uploadFile({
+			cloudPath: config.MEET_TIMEMARK_QR_PATH + timeMark +'qr.png',
+			fileContent: timeMark,
+		});
+
+		if (!upload || !upload.fileID) return;
+		return upload.fileID;
 	}
 
 	/** 管理员按钮核销 */
@@ -223,7 +234,8 @@ class AdminMeetService extends BaseAdminService {
     let data = {
       MEET_STYLE_SET:styleSet
     }
-    return await MeetModel.edit(meetId,data)
+    await MeetModel.edit(meetId,data)
+    return styleSet
 	}
 
 	/** 更新日期设置 */
@@ -245,7 +257,7 @@ class AdminMeetService extends BaseAdminService {
 		isShowLimit,
 		formSet
 	}) {
-    		// 入库
+		// 入库
 		let data = {
       MEET_TYPE_ID: typeId,
       MEET_TYPE_NAME: typeName,
@@ -254,7 +266,30 @@ class AdminMeetService extends BaseAdminService {
       MEET_DAYS:daysSet,
       MEET_FORM_SET:formSet,
       MEET_ORDER:order
-		}
+    }
+    console.log("更新预约记录")
+    // console.log(daysSet)
+    // 更新预约天数
+    for (const key in daysSet) {
+      // 查看预约时间是否存在，存在则更新，不存在则插入
+      const dayInfo  = daysSet[key];
+      let where = {
+        DAY_MEET_ID: id,
+        day: dayInfo.day
+      }
+      let dayData = {
+        dayDesc: dayInfo.dayDesc,
+        times: dayInfo.times
+      }
+      const dbDay  = await DayModel.getOne(where)
+      console.log("dbDay:",dbDay)
+      if(dbDay === null){
+        dayInfo.DAY_MEET_ID = id
+        await DayModel.insert(dayInfo)
+      }else {
+        await DayModel.edit(where,dayData)
+      }
+    }
     return await MeetModel.edit(id,data)
 	}
 

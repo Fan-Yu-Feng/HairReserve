@@ -24,7 +24,7 @@ class AdminMeetController extends BaseAdminController {
 		return count;
 	}
 
-	/** 生成自助签到码 */
+	/** 获取预约天数list */
 	async getDayList() {
 		await this.isAdmin();
 

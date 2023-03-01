@@ -158,14 +158,14 @@
  					if (err && err.errMsg && err.errMsg.includes('-501000') && err.errMsg.includes('Environment not found')) {
  						wx.showModal({
  							title: '',
- 							content: '未找到云环境ID，请按手册检查前端配置文件setting.js的配置项【CLOUD_ID】或咨询作者微信fanyufeng_wx',
+ 							content: '未找到云环境ID，请按手册检查前端配置文件setting.js的配置项【CLOUD_ID】或咨询管理员',
  							showCancel: false
  						});
 
  					} else if (err && err.errMsg && err.errMsg.includes('-501000') && err.errMsg.includes('FunctionName')) {
  						wx.showModal({
  							title: '',
- 							content: '云函数未创建或者未上传，请参考手册或咨询作者微信fanyufeng_wx',
+ 							content: '云函数未创建或者未上传，请参考手册或联系管理员',
  							showCancel: false
  						});
 

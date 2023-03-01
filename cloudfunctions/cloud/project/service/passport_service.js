@@ -17,7 +17,7 @@ class PassportService extends BaseService {
 			USER_MINI_OPENID: userId
 		}
 		let cnt = await UserModel.count(where);
-		if (cnt > 0) return;
+      if (cnt > 0) return;
 
 		// 入库
 		let data = {
