@@ -237,7 +237,7 @@ class AdminMeetService extends BaseAdminService {
 	async _editDays(meetId, nowDay, daysSetData) {
     console.log(nowDay)
     console.log(daysSetData)
-    
+    console.log(meetId)
 		this.AppError('更新日期设置功能暂不开放，如有需要请加作者微信：fanyufeng_wx');
 	}
 

@@ -27,6 +27,8 @@ class AdminTempService extends BaseAdminService {
 		limit,
 		isLimit
 	}) {
+    // 限制人数 
+    // 是否限制
     console.log(isLimit,limit)
 		this.AppError('更新数据功能暂不开放，如有需要请加作者微信：fanyufeng_wx'); 
     let data = {}

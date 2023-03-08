@@ -13,14 +13,15 @@
 
 			</view>
 			<view class="desc text-s">共登录{{admin.cnt}}次，上次{{admin.last}}</view>
-		</view>
+		</view>2
 		<view class="exit-admin" bindtap="bindExitTap"><text class="icon-exit"></text></view>
 	</view>
 
 
 	<view class="comm-list grid col-4">
 		<view class="item" bindtap="url" data-url="../../meet/list/admin_meet_list">{{data.meetCnt||'...'}}<text class="text-black">活动/预约数</text></view>
-		<view class="item" bindtap="url" data-url="../../info/admin_info_list">{{data.joinCnt||'...'}}<text class="text-black">预约数</text></view>
+		<!-- <view class="item" bindtap="url" data-url="../../info/admin_info_list">{{data.joinCnt||'...'}}<text class="text-black">预约数</text></view> -->
+    <!-- TODO 暂时关闭该功能 -->
 		<view class="item" bindtap="url" data-url="../../user/list/admin_user_list">{{data.userCnt||'...'}}<text class="text-black">用户</text></view>
 		<view class="item" bindtap="url" data-url="../../news/list/admin_news_list">{{data.newsCnt||'...'}}<text class="text-black">文章数</text></view>
 
