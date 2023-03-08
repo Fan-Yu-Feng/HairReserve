@@ -6,7 +6,8 @@
 	<cmpt-comm-list id="cmpt-comm-list" type="admin-meet-join-list" search="{{search}}" _params="{{_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="admin/meet_join_list" topBottom="50" placeholder="搜索" sortMenusDefaultIndex="0" bind:list="bindCommListCmpt">
 
 		<view slot="searchEnd">
-			<button bindtap="url" data-url="../self/admin_meet_self?mark={{mark}}&title={{titleEn}}" class="btn radius mid bg-blue margin-right-xs">自助签到码</button>
+    <!-- TODO 自助签到码功能二期开发 -->
+			<!-- <button bindtap="url" data-url="../self/admin_meet_self?mark={{mark}}&title={{titleEn}}" class="btn radius mid bg-blue margin-right-xs">自助签到码</button> -->
 			<button bindtap="bindCancelAllTap" class="btn mid radius bg-orange margin-right-xs">取消所有</button> 
 		</view>
 
