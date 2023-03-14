@@ -18,9 +18,7 @@
 
 ## 作者
 - 如有疑问，欢迎骚扰联系我鸭：开发交流，技术分享，问题答疑，功能建议收集，版本更新通知
-- 俺的微信:
-
-![image](https://user-images.githubusercontent.com/100545532/156072800-293d11b8-3b3f-4c5f-8b60-c3e6bc536c6c.png)
+- 俺的微信:fanyufeng_wx
 
 
 
@@ -39,7 +37,7 @@
 
 
 ## 截图
- 
+
 ![image](https://user-images.githubusercontent.com/100545532/156072825-d0321de5-6769-440c-8b65-1a9f2c593e36.png)
 ![image](https://user-images.githubusercontent.com/100545532/156072833-0afa00ff-4f4e-4b79-bbc2-5fa1aa0689d8.png)
 
